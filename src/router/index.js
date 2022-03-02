@@ -89,6 +89,19 @@ export const constantRoutes = [
       }
     ]
   },
+/* test列表路由 */
+  {
+    path: '/test',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'test',
+        component: () => import('@/views/test/index'),
+        meta: { title: 'Test', icon: 'form' }
+      }
+    ]
+  },
 
   {
     path: '/nested',
