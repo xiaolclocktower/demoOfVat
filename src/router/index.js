@@ -98,7 +98,20 @@ export const constantRoutes = [
         path: 'index',
         name: 'test',
         component: () => import('@/views/test/index'),
-        meta: { title: 'Test', icon: 'form' }
+        meta: { title: 'Test', icon: 'table' }
+      }
+    ]
+  },
+  /* renderless路由列表 */
+  {
+    path: '/renderless',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'renderless',
+        component: () => import('@/views/renderless/index'),
+        meta: { title: 'Renderless', icon: 'form' }
       }
     ]
   },

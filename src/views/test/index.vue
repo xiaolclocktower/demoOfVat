@@ -90,4 +90,5 @@ import Conditions from "./comonponents/conditions/index.vue"
 .test-wrapper{
     padding: 20px;
 }
+
 </style>
