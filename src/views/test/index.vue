@@ -3,15 +3,15 @@
         <list-layout>
             <!-- 替换插槽内容 -->
              <template slot="header">
-                 1111
+                <conditions></conditions>
              </template>
              <template slot="content">
-                 2222
+                <!-- 使用封装的table组件 -->
+                <al-table :column="formData.column" border align="center" :data="formData.list"  >
+                </al-table>
              </template>
         </list-layout>
-        <!-- 使用封装的table组件 -->
-        <al-table :column="formData.column" border align="center" :data="formData.list"  >
-        </al-table>
+        
         
     </div>
 </template>
@@ -20,7 +20,8 @@
 import { getTestList } from '@/api/test.js';
 /* 引入组件 */
 import ListLayout from "@/components/ListLayout/ListLayout.vue"
-import  AlTable from "@/components/lb-table/lb-table.vue"
+import AlTable from "@/components/lb-table/lb-table.vue"
+import Conditions from "./comonponents/conditions/index.vue"
     export default {
         data(){
             return{
@@ -56,7 +57,10 @@ import  AlTable from "@/components/lb-table/lb-table.vue"
                         },
                          {
                             prop:'actions',
-                            label:'操作'
+                            label:'操作',
+                            render(_, scope){
+                                return (<el-button type="primary" round>操作</el-button>)
+                            }
                         },
                     ],
                     list:[]
@@ -66,7 +70,8 @@ import  AlTable from "@/components/lb-table/lb-table.vue"
         /* 注册组件 */
         components:{
             ListLayout,
-            AlTable
+            AlTable,
+            Conditions
         },
         created(){
             /* 挂载时就调用getTestList方法获取数据 */
@@ -75,9 +80,6 @@ import  AlTable from "@/components/lb-table/lb-table.vue"
                 if(Number(code) === 20000){
                     const{items ,total} = data
                     this.formData.list = items
-                    console.log(this.formData.list)
-                    console.log(aaaa)
-                    
                 }
             })
         }
