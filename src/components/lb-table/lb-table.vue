@@ -140,6 +140,7 @@ export default {
     },
     dataLength () {
       this.getMergeArr(this.data, this.merge)
+      
     }
   }
 }

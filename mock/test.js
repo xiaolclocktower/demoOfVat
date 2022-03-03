@@ -1,4 +1,4 @@
-const list =[
+const list = [
     {
         nick:"Allen1",
         phone:15532298716,

@@ -58,7 +58,8 @@ import  AlTable from "@/components/lb-table/lb-table.vue"
                             prop:'actions',
                             label:'操作'
                         },
-                    ]
+                    ],
+                    list:[]
                 }
             }
         },
@@ -75,6 +76,7 @@ import  AlTable from "@/components/lb-table/lb-table.vue"
                     const{items ,total} = data
                     this.formData.list = items
                     console.log(this.formData.list)
+                    console.log(aaaa)
                     
                 }
             })
