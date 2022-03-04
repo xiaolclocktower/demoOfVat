@@ -55,6 +55,7 @@ export default {
     // TODO: refactor with render function
     this.onlyOneChild = null
     return {}
+     
   },
   methods: {
     hasOneShowingChild(children = [], parent) {

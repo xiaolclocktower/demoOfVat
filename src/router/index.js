@@ -93,6 +93,7 @@ export const constantRoutes = [
   {
     path: '/test',
     component: Layout,
+    meta:{roles:'Super Admin'},
     children: [
       {
         path: 'index',
@@ -106,6 +107,7 @@ export const constantRoutes = [
   {
     path: '/renderless',
     component: Layout,
+    meta:{roles:'Normal Editor'},
     children: [
       {
         path: 'index',

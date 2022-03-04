@@ -20,7 +20,6 @@
                     this.errMsg = check ? '' : cur.message
                     return pre && check
                 },true)
-                console.log(validateStatus);
                 return validateStatus
             }
         }

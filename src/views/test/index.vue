@@ -81,7 +81,7 @@ import Conditions from "./comonponents/conditions/index.vue"
                     const{items ,total} = data
                     this.formData.list = items
                 }
-            })
+            });
         }
     }
 </script>
