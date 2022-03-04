@@ -4,6 +4,9 @@
 
     <breadcrumb class="breadcrumb-container" />
 
+    <el-button type="success" round v-if="isAdmin()" class="info-btn">admin消息通知</el-button>
+    <el-button type="primary" round v-if="isEditor()" class="info-btn">editor消息通知</el-button>
+
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -44,7 +47,8 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'roles',
     ])
   },
   methods: {
@@ -54,7 +58,22 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    }
+    },
+    /* 按钮权限控制 */
+    isAdmin(){
+      if(this.roles == "admin"){
+        return true
+      }else{
+        return false
+      }
+    },
+     isEditor(){
+      if(this.roles == "editor"){
+        return true
+      }else{
+        return false
+      }
+    },
   }
 }
 </script>
@@ -84,6 +103,10 @@ export default {
     float: left;
   }
 
+/* 消息按钮样式 */
+  .info-btn{
+   margin: 5px 20px;
+  }
   .right-menu {
     float: right;
     height: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!item.hidden">
+  <div v-if="!item.hidden && isRolesCanSee(item.meta.roles)">
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -31,6 +31,9 @@ import Item from './Item'
 import AppLink from './Link'
 import FixiOSBug from './FixiOSBug'
 
+/* 获取当前角色 */
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'SidebarItem',
   components: { Item, AppLink },
@@ -54,8 +57,16 @@ export default {
     // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
     // TODO: refactor with render function
     this.onlyOneChild = null
-    return {}
+    return {
+      
+    }
      
+  },
+  /* 用于获取roles */
+   computed: {
+    ...mapGetters([
+      'roles',
+    ])
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
@@ -90,7 +101,16 @@ export default {
         return this.basePath
       }
       return path.resolve(this.basePath, routePath)
+    },
+    /* 判断当前roles是否包含在item.meta.roles中包含则显示 */
+    isRolesCanSee(item){
+        if(item.indexOf(this.roles[0]) == -1){
+          return false
+        } else{
+          return true
+        }
     }
   }
+  
 }
 </script>

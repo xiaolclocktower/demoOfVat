@@ -110,10 +110,11 @@ export default {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
+           /*  this.$router.push({ path: this.redirect || '/' }) 
+           直接修改登录后的界面可以避免切换登录后看到其他用户界面的问题，
+           但是如果是同一用户就无法返回工作前的页面，各有优劣*/
+           this.$router.push({ path:  '/' })
             this.loading = false
-            console.log(this.loginForm.username);
-          console.log(this.$store.state.user.name);
           }).catch(() => {
             this.loading = false
           })    
