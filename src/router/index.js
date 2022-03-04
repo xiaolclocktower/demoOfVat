@@ -187,12 +187,12 @@ export const asyncRoutes = [{
       }
     }]
   },
-  /* renderless路由列表 */
+  /* renderless路由表单 */
   {
     path: '/renderless',
     component: Layout,
     meta: {
-      roles: ['editor']
+      roles: ['admin']
     },
     children: [{
       path: 'index',
@@ -201,7 +201,7 @@ export const asyncRoutes = [{
       meta: {
         title: 'Renderless',
         icon: 'form',
-        roles: ['editor']
+        roles: ['admin']
       }
     }]
   },
@@ -210,7 +210,7 @@ export const asyncRoutes = [{
     path: '/test',
     component: Layout,
     meta: {
-      roles: ['admin']
+      roles: ['editor']
     },
     children: [{
       path: 'index',
@@ -219,7 +219,7 @@ export const asyncRoutes = [{
       meta: {
         title: 'Test',
         icon: 'table',
-        roles: ['admin']
+        roles: ['editor']
       }
     }]
   },
