@@ -44,7 +44,6 @@ export const constantRoutes = [{
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    meta:{roles: ['admin','editor']},
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
@@ -52,7 +51,6 @@ export const constantRoutes = [{
       meta: {
         title: 'Dashboard',
         icon: 'dashboard',
-        roles: ['admin','editor']
       }
     }]
   },
