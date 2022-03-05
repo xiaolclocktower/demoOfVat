@@ -1,5 +1,6 @@
 <template>
     <div class="test-wrapper">
+        <h2>该页面仅editor可见</h2>
         <list-layout>
             <!-- 替换插槽内容 -->
              <template slot="header">
@@ -17,8 +18,10 @@
 </template>
 
 <script>
+
+/* 引入mixin组件 */
 import { getTestList } from '@/api/test.js';
-/* 引入组件 */
+
 import ListLayout from "@/components/ListLayout/ListLayout.vue"
 import AlTable from "@/components/lb-table/lb-table.vue"
 import Conditions from "./comonponents/conditions/index.vue"
@@ -74,11 +77,11 @@ import Conditions from "./comonponents/conditions/index.vue"
             Conditions
         },
         created(){
-            /* 挂载时就调用getTestList方法获取数据 */
+           /* 挂载时就调用getTestList方法获取数据 */
             getTestList().then(res =>{
                 const{ code,data} = res
                 if(Number(code) === 20000){
-                    const{items ,total} = data
+                    const{items } = data
                     this.formData.list = items
                 }
             });

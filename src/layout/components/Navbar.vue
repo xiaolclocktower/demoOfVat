@@ -4,8 +4,8 @@
 
     <breadcrumb class="breadcrumb-container" />
 
-    <el-button type="success" round v-if="isAdmin()" class="info-btn">admin消息通知</el-button>
-    <el-button type="primary" round v-if="isEditor()" class="info-btn">editor消息通知</el-button>
+    <el-button type="success" round v-if="isRolesInfo('admin')" class="info-btn">admin消息通知</el-button>
+    <el-button type="primary" round v-if="isRolesInfo('editor')" class="info-btn">editor消息通知</el-button>
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -59,20 +59,9 @@ export default {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
-    /* 按钮权限控制 */
-    isAdmin(){
-      if(this.roles == "admin"){
-        return true
-      }else{
-        return false
-      }
-    },
-     isEditor(){
-      if(this.roles == "editor"){
-        return true
-      }else{
-        return false
-      }
+    /* 信息按钮权限控制 */
+    isRolesInfo(item){
+     return this.roles[0] == item ? true : false;
     },
   }
 }
