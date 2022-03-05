@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="renderless-input">
         <h2>该页面仅admin可见</h2>
         <s-validate #default="{validate }" :rules = "rules" :value="value">
             <el-input v-model="value" @blur="validate" />
@@ -30,5 +30,11 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .renderless-input{
+        margin: 0 40px;
+        .el-input{
+        width: 50%;
+        }
+    }
+    
 </style>
